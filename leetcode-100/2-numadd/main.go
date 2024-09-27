@@ -8,8 +8,51 @@ func main() {
 }
 
 type ListNode struct {
-	val  int
+	Val  int
 	Next *ListNode
+}
+
+func addTwoNumbers3(l1 *ListNode, l2 *ListNode) *ListNode {
+	return new(ListNode)
+}
+
+func addTwoNumbers1(l1 *ListNode, l2 *ListNode) *ListNode {
+	var a, b int
+	head := new(ListNode)
+	if l1 == nil && l2 == nil {
+		return nil
+	} else if l1 == nil && l2 != nil {
+		return l2
+	} else if l2 == nil && l1 != nil {
+		return l1
+	}
+	for l1.Next != nil || l2.Next != nil {
+		cur := new(ListNode)
+		head.Next = cur
+		// 获取当前数据要分析是否为nil，为空则不能直接获取数据，会报错
+		if l1 == nil && l2 != nil {
+			a = 0
+			b = l2.Val
+		} else if l2 == nil && l1 != nil {
+			a = l1.Val
+			b = 0
+		}
+		if a+b < 10 {
+			head.Val += a + b
+		} else {
+			higher := 0
+			higher = a + b - (a+b)%10
+			head.Val = (a + b) % 10
+			head.Next.Val += higher
+		}
+		// 获取当前数据要分析是否为nil，为空则不能直接获取数据，会报错
+		if l1 == nil && l2 != nil {
+			l2 = l2.Next
+		} else if l2 == nil && l1 != nil {
+			l1 = l1.Next
+		}
+	}
+	return head
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) {
@@ -18,11 +61,11 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) {
 	level := 0
 	curr := 0
 	for l1.Next != nil || l2.Next != nil {
-		if l1.val+l2.val > 10 {
-			curr = l1.val + l2.val - (l1.val+l2.val)%10
-			higher = (l1.val + l2.val) % 10
+		if l1.Val+l2.Val > 10 {
+			curr = l1.Val + l2.Val - (l1.Val+l2.Val)%10
+			higher = (l1.Val + l2.Val) % 10
 		} else {
-			cur = (l1.val + l2.val) % 10
+			cur = (l1.Val + l2.Val) % 10
 		}
 		if higher != 0 {
 			curr += higher
