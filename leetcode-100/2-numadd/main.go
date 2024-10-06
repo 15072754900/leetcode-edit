@@ -1,11 +1,6 @@
-package main
+package numadd
 
 import "fmt"
-
-func main() {
-	// 求取使用链表存储的两数相加和
-
-}
 
 type ListNode struct {
 	Val  int
