@@ -55,6 +55,38 @@ func addTwoNumbers3(l1 *ListNode, l2 *ListNode) *ListNode {
 	return head.Next
 }
 
+func addTwoNumbers4(l1, l2 *ListNode) *ListNode {
+	// 注意事项：建立当前节点值，建立下一节点重复加值，建立虚拟头结点，建立复制节点，并且该复制节点在循环里面需要移动指针
+	sum, carry := 0, 0
+	head := &ListNode{Val: 0}
+	var cur *ListNode
+	cur = head
+	if l1 == nil && l2 == nil {
+		return nil
+	} else if l1 != nil && l2 == nil {
+		return l1
+	} else if l1 == nil && l2 != nil {
+		return l2
+	}
+	for l1 != nil || l2 != nil || carry != 0 {
+		n1, n2 := 0, 0
+		if l1 != nil {
+			n1 = l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			n2 = l2.Val
+			l2 = l2.Next
+		}
+		sum = (n1 + n2 + carry) % 10
+		carry = (n1 + n2 + carry) / 10
+		now := &ListNode{Val: sum}
+		cur.Next = now
+		cur = now
+	}
+	return head.Next
+}
+
 // func addTwoNumbers1(l1 *ListNode, l2 *ListNode) *ListNode {
 // 	var a, b int
 // 	head := new(ListNode)
