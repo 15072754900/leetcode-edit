@@ -1,0 +1,5 @@
+package middleNum
+
+func Get() {
+
+}
