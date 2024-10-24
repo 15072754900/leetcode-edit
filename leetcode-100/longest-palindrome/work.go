@@ -46,6 +46,8 @@ func longestPalindrome1(s string) string {
 	return s[judge.start : judge.start+judge.maxLength]
 }
 
+// 设计三个循环，第一个循环开始元素，第二个内循环，循环从尾部指针开始到指定位置，第三个循环，判断是否“还是”相同的，获取当前最大值
+
 // 包含一个内循环和一个外循环
 
 func longestPalindrome(s string) string {
