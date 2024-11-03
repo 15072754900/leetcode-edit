@@ -40,7 +40,7 @@
 **状态定义**：设 `dp[i]` 表示以 `nums[i]` 结尾的最长递增子序列的长度。
 
 **状态转移方程**：
-- `dp[i] = max(dp[j] + 1)`，其中 `0 ≤ j < i` 且 `nums[j] < nums[i]`。
+- `dp[i] = max(dp[i], dp[j] + 1)`，其中 `0 ≤ j < i` 且 `nums[j] < nums[i]`。
 
 ### 3. 背包问题（Knapsack Problem）
 
