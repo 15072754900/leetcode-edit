@@ -13,7 +13,7 @@ import (
 3.确定单层递归的逻辑
 */
 
-func preorderTraversal(root *tree.TreeNode) []int {
+func PreorderTraversal(root *tree.TreeNode) []int {
 	ans := make([]int, 0)
 	var dfs func(root *tree.TreeNode, nums []int) []int
 	dfs = func(root *tree.TreeNode, nums []int) []int {
@@ -21,8 +21,8 @@ func preorderTraversal(root *tree.TreeNode) []int {
 			return nums
 		}
 		nums = append(nums, root.Val)
-		dfs(root.Left, nums)
-		dfs(root.Right, nums)
+		nums = dfs(root.Left, nums)
+		nums = dfs(root.Right, nums)
 		return nums
 	}
 	ans = dfs(root, ans)

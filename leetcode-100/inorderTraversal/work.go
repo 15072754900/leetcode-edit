@@ -7,7 +7,7 @@ import (
 
 // leetcode-94
 
-func inorderTraversal(root *tree.TreeNode) []int {
+func InorderTraversal(root *tree.TreeNode) []int {
 	ans := make([]int, 0)
 	var dfs func(node *tree.TreeNode, nums []int) []int
 	dfs = func(node *tree.TreeNode, nums []int) []int {

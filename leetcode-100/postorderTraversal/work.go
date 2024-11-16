@@ -5,7 +5,7 @@ import (
 	tree "hufeng/demo/tree-Type"
 )
 
-func postorderTraversal(root *tree.TreeNode) []int {
+func PostorderTraversal(root *tree.TreeNode) []int {
 	ans := make([]int, 0)
 	var dfs func(node *tree.TreeNode, nums []int) []int
 	dfs = func(node *tree.TreeNode, nums []int) []int {
