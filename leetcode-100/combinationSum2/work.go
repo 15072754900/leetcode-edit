@@ -33,6 +33,7 @@ func combinationSum2(candidates []int, target int) [][]int {
 			if nums[i] > target {
 				break
 			}
+			// 树层去重的操作一定是在循环里面执行的，使用的usedslice是什么数据结构无妨，但是一定是在i>0且前一个数相同
 			if i > 0 && nums[i] == nums[i-1] && used[i-1] != 1 {
 				continue
 			}

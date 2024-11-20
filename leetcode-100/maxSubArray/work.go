@@ -1,5 +1,7 @@
 package maxSubArray
 
+import "fmt"
+
 func maxSubArray(nums []int) int {
 	// 该题目的思路：两个变量的修改，首先是left，然后是一个max，记录位置和最大值
 	if len(nums) == 1 {
@@ -76,4 +78,43 @@ func hufeng(nums []int) int {
 		}
 	}
 	return maxI
+}
+
+func hufeng1119(nums []int) int {
+	if len(nums) == 1 {
+		return max(0, nums[0])
+	}
+	ans := 0
+	dp := make([]int, len(nums))
+	if nums[0] > 0 {
+		dp[0] = nums[0]
+	} else {
+		dp[0] = 0
+	}
+	for i := 1; i < len(nums); i++ {
+		cur := dp[i-1] + nums[i]
+		if cur > 0 {
+			dp[i] = cur
+		} else {
+			dp[i] = 0
+		}
+		if ans < dp[i] {
+			ans = dp[i]
+		}
+	}
+	fmt.Println(ans)
+	return ans
+}
+func rightAns(nums []int) int {
+	ans := nums[0]
+	for i := 1; i < len(nums); i++ {
+
+		if nums[i]+nums[i-1] >= nums[i-1] {
+			nums[i] = nums[i-1] + nums[i]
+		}
+		if ans < nums[i] {
+			ans = nums[i]
+		}
+	}
+	return ans
 }
